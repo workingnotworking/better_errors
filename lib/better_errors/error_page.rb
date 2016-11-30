@@ -80,7 +80,7 @@ module BetterErrors
     end
 
     def rack_session
-      '' # env['rack.session']
+      {} # env['rack.session']
     end
 
     def rails_params
