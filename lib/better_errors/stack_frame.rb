@@ -67,21 +67,21 @@ module BetterErrors
     end
 
     def local_variables
-      return {} unless frame_binding
-      frame_binding.eval("local_variables").each_with_object({}) do |name, hash|
-        if defined?(frame_binding.local_variable_get)
-          hash[name] = frame_binding.local_variable_get(name)
-        else
-          hash[name] = frame_binding.eval(name.to_s)
-        end
-      end
+      return {} # unless frame_binding
+      # frame_binding.eval("local_variables").each_with_object({}) do |name, hash|
+      #   if defined?(frame_binding.local_variable_get)
+      #     hash[name] = frame_binding.local_variable_get(name)
+      #   else
+      #     hash[name] = frame_binding.eval(name.to_s)
+      #   end
+      # end
     end
 
     def instance_variables
-      return {} unless frame_binding
-      Hash[visible_instance_variables.map { |x|
-        [x, frame_binding.eval(x.to_s)]
-      }]
+      return {} # unless frame_binding
+      # Hash[visible_instance_variables.map { |x|
+      #   [x, frame_binding.eval(x.to_s)]
+      # }]
     end
 
     def visible_instance_variables
